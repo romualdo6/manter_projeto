@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Sistema;
 use Illuminate\Http\Request;
 
@@ -43,7 +44,7 @@ class SistemaController extends Controller
         Sistema::create($request->all());
 
         return redirect()->route('sistema.create')
-                        ->with('success','MN002 - Operação realizada com sucesso.');
+            ->with('success', 'MN002 - Operação realizada com sucesso.');
     }
     /**
      * Find in Sistema Model.
@@ -53,18 +54,17 @@ class SistemaController extends Controller
      */
 
     public function find(Request $request)
-    {   
+    {
 
         $this->validate($request, [
             'email' => 'nullable|email',
         ]);
 
-        $results = Sistema::where('email', 'LIKE', '%'.$request->email.'%')
-            ->where('descricao', 'LIKE', '%'.$request->descricao.'%')
-            ->where('sigla', 'LIKE', '%'.$request->sigla.'%')->get();
+        $results = Sistema::where('email', 'LIKE', '%' . $request->email . '%')
+            ->where('descricao', 'LIKE', '%' . $request->descricao . '%')
+            ->where('sigla', 'LIKE', '%' . $request->sigla . '%')->get();
 
         return view('Sistema.find', ['results' => $results]);
-
     }
 
     /**
@@ -74,9 +74,7 @@ class SistemaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {   
-
-    }
+    { }
 
     /**
      * Show the form for editing the specified resource.
